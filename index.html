@@ -59,15 +59,6 @@
 					$(this).css('background',b)
 					$(this).css('background-size','100%')
 				})
-				
-				var homepage = new Vue({
-					el: '#homepage',
-					data:{
-						dataList:[
-							1,2,3,4
-							]
-					}
-				})
 
 			}
 			
@@ -128,11 +119,11 @@
 	<body class="bg">
 		<div class="row">
 		  <!--left view-->
-		  <div class="col-xs-10 col-md-7 col-md-offset-1 col-xs-offset-1" id='homepage'>
+		  <div class="col-xs-10 col-md-7 col-md-offset-1 col-xs-offset-1">
 			<div class="block" v-for="item in dataList">
 			
 				<a href='./detail.html'>
-					<div class="paragraph-title">
+					<div class="paragraph-title" "margin-top: 48px;">
 						<center><h3>deploy ejb with restful service to jboss</h3></center>
 					</div>
 				</a>
