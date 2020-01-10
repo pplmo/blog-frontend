@@ -14,55 +14,64 @@
 		
 		<script src="./js/bootstrap.min.js"></script>
 		
-		<!-- <script type="text/javascript" src="./js/index.js"></script> -->
-		<!-- <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
-			<script>
-				window.onload=function(){
-					$('.block').mouseover(function(){
-					    $(this).css('box-shadow','0px 0px 2px 1px #555555 inset')
-					});
-					$('.block').mouseout(function(){
-					    $(this).css('box-shadow','0px 0px 0px 0px #555555 inset')
-					});
-					$('.right-block1').mouseover(function(){
-						$(this).css('box-shadow','0px 0px 2px 1px #555555 inset')
-						
-					});
-					$('.right-block1').mouseout(function(){
-					    $(this).css('box-shadow','0px 0px 0px 0px #555555 inset')
-					})
+		<script type="text/javascript" src="./js/index.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			window.onload=function(){
+				$('.block').mouseover(function(){
+				    $(this).css('box-shadow','0px 0px 2px 1px #555555 inset')
+				});
+				$('.block').mouseout(function(){
+				    $(this).css('box-shadow','0px 0px 0px 0px #555555 inset')
+				});
+				$('.right-block1').mouseover(function(){
+					$(this).css('box-shadow','0px 0px 2px 1px #555555 inset')
 					
-					$('.details').mouseover(function(){
-						$(this).css('background-color','#000000')
-						$(this).css('color','white')
-					})
-					$('.details').mouseout(function(){
-						// $(this).css('background-color','white')
-						// $(this).css('color','#555555')
-						
-					})
-					$('a').mouseover(function(){
-						$(this).css('text-decoration','none')
-					})
-					$('.paragraph-title').mouseover(function(){
-						$(this).css('text-decoration','underline')
-					})
-					$('.paragraph-title').mouseout(function(){
-						$(this).css('text-decoration','none')
-					})
-					$('.bg').click(function(){
-						var i =Math.ceil((Math.random())*10)
-						
-						var b ='url(img/bg'+i+'.jpg) no-repeat'
-						// alert(b)
-						// alert(typeof(b))
-						$(this).css('background',b)
-						$(this).css('background-size','100%')
-					})
+				});
+				$('.right-block1').mouseout(function(){
+				    $(this).css('box-shadow','0px 0px 0px 0px #555555 inset')
+				})
+				
+				$('.details').mouseover(function(){
+					$(this).css('background-color','#000000')
+					$(this).css('color','white')
+				})
+				$('.details').mouseout(function(){
+					$(this).css('background-color','white')
+					$(this).css('color','#555555')
+				})
+				$('a').mouseover(function(){
+					$(this).css('text-decoration','none')
+				})
+				$('.paragraph-title').mouseover(function(){
+					$(this).css('text-decoration','underline')
+				})
+				$('.paragraph-title').mouseout(function(){
+					$(this).css('text-decoration','none')
+				})
+				$('.bg').click(function(){
+					var i =Math.ceil((Math.random())*10)
 					
-					var dd = [1, 2, 3]
-			</script> -->
+					var b ='url(img/bg'+i+'.jpg) no-repeat'
+					// alert(b)
+					// alert(typeof(b))
+					$(this).css('background',b)
+					$(this).css('background-size','100%')
+				})
+				
+				var homepage = new Vue({
+					el: '#homepage',
+					data:{
+						dataList:[
+							1,2,3,4
+							]
+					}
+				})
 
+			}
+			
+		</script>
 		<style type='text/css'>
 			body{
 				background: url(img/bg3.jpg) no-repeat; 
@@ -107,7 +116,6 @@
 			}
 			.paragraph-title, .descr{
 				color: #555555;
-				margin-top: 48px;
 			}
 			.details{
 				color: #555555;
@@ -120,10 +128,8 @@
 	<body class="bg">
 		<div class="row">
 		  <!--left view-->
-		  <div class="col-xs-10 col-md-7 col-md-offset-1 col-xs-offset-1"  id='homepage'>
-			<!-- <div class="block"  v-for="item in dataList"> -->
-			
-			<div class="block"  :style="styleObject" @mouseover="msr(index)" @mouseout="mst(index)"  v-for="(item,index) in dataList">
+		  <div class="col-xs-10 col-md-7 col-md-offset-1 col-xs-offset-1" id='homepage'>
+			<div class="block" v-for="item in dataList">
 			
 				<a href='./detail.html'>
 					<div class="paragraph-title">
@@ -147,8 +153,8 @@
 					</div>
 
 				<div class="change" style="margin-top: 45px;">
-					<a href='./detail.html'><span class="details"> Read more>></span></a>
-		
+					<a href='./detail.html'><span  class="details"> Read more>></span></a>
+					
 				</div>
 				</center>
 			</div>
@@ -190,29 +196,6 @@
 		  
 		</div>
 		
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<script>
-			var homepage = new Vue({
-				el:'#homepage',
-				data:{
-					dataList:[1,2,3,4],
-					styleObject:{
-						border:''
-					}
-				},
-				methods:{
-					msr:function(indexnum){
-						this[indexnum]()
-						
-						this.styleObject = {shadow:'0px 2px 1px 0px #000000 inset'}
-					},
-					mst:function(indexnum){
-						this.styleObject = {shadow:'0px 0px 0px 0px #000000 inset'}
-					}
-				}
-			})
-			
-		</script>
 		
 	</body>
 	
