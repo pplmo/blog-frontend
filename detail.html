@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		detail
+		<div id="area"></div>
+		
+		<script>
+			// import showdown from 'showdown';
+			let converter = new showdown.Converter();
+			//html变量是HTML代码字符串
+			//text是Markdown语法的字符串
+			text = "
+				```bash
+				echo 'hello world'
+				```
+				```python
+				print("How are you, Ran?")
+				```"
+			console.log(text)
+			let html = converter.makeHtml(text);
+			document.getElementById('area').innerHTML = html;
+			
+			renderMD(param){
+			        let path = Params[0].file;
+			        if(param !== null && param !== undefined && param !== ' '){
+			            path = Params[param].file;
+			        }
+			        let tmp =  Ajax({
+			            url:path,
+			            headers:{
+			                'content-type':'text/plain'
+			            },
+			            method:'get'
+			        });
+			        tmp.then(res => {
+			            // console.log(res);
+			            let Convertor = new showdown.Converter();
+			            let html = Convertor.makeHtml(res);
+			            document.getElementsByClassName('DetailDisplay')[0].innerHTML = html;
+			        });
+			    }
+		</script>
+	</body>
+</html>

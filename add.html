@@ -1,0 +1,125 @@
+
+<!doctype html>
+
+<html>
+
+ 
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>EditorMD</title>
+
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <link rel="stylesheet" type="text/css" href="static/plug-ins/lib/codemirror/codemirror.min.css" />
+
+    <!--<script type="text/javascript" src="plug-ins/JQuery/jquery-3.3.1.min.js"></script>-->
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+    <script type="text/javascript" src="static/plug-ins/editormd.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="static/plug-ins/css/editormd.css" />
+
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>-->
+
+</head>
+
+ 
+
+<body background="img/bg7.jpg">
+	<br />
+	<div class="">
+		<center><strong>标题:</strong><input type="text" name='title' id="" value=""/></center>
+	</div>
+	
+	<br >
+	<br >
+	<div class="editormd" id="test-editormd">
+		
+		
+		<textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc"></textarea>
+
+		<!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
+
+		<textarea class="editormd-html-textarea" name="text"></textarea>
+
+	</div>
+	
+	<div id="">
+		<button type="button" id='fi'>finish</button>
+	</div>
+
+<script type="text/javascript">
+
+    $(function() {
+
+        editormd("test-editormd", {
+            //开启emoji（默认关闭）
+            emoji : true,
+            width   : "90%",
+            height  : 500,
+            syncScrolling : "single",
+            //lib目录的路径
+            path    : "static/plug-ins/lib/",
+            //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
+            saveHTMLToTextarea : true
+
+        });
+
+    });
+	
+	document.querySelector("#fi").click(function(){
+		console.log('hello')
+		alert('yes')
+	})
+	/**
+	 * 鼠标和触摸事件的判断/选择方法
+	 * MouseEvent or TouchEvent type switch
+	 *
+	 * @param   {String} [mouseEventType="click"]    供选择的鼠标事件
+	 * @param   {String} [touchEventType="touchend"] 供选择的触摸事件
+	 * @returns {String} EventType                   返回事件类型名称
+	 */
+	
+	editormd.mouseOrTouch = function(mouseEventType, touchEventType) {
+	    mouseEventType = mouseEventType || "click";
+	    touchEventType = touchEventType || "touchend";
+	
+	    var eventType  = mouseEventType;
+	
+	    try {
+	        document.createEvent("TouchEvent");
+	       // eventType = touchEventType;
+	    } catch(e) {
+	        console.log(e.toString());
+	    }
+	    //解决chrome浏览器不绑定工具栏点击事件
+	    var userAgentInfo = navigator.userAgent;
+	  //  console.log(userAgentInfo);
+	    var Agents = new Array("Android", "iPhone",  "Windows Phone", "iPad", "iPod");
+	    var flag = false;
+	    for (var v = 0; v < Agents.length; v++) {
+	        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+	            flag = true;
+	            break;
+	        }
+	    }
+	    if(flag){
+	        eventType = touchEventType;
+	    }
+	   // console.log(eventType);
+	    return eventType;
+	};
+	
+
+
+
+</script>
+
+</body>
+
+</html>
+
