@@ -8,7 +8,7 @@
     "directories": {"lib": "./lib"},
     "scripts": {"test": "node ./test/run.js"},
     "devDependencies": {"node-static": "0.7.11",
-                        "phantomjs": "1.9.20",
+                        "phantomjs": "2.1.7",
                         "blint": "1.1.2"},
     "bugs": "http://github.com/codemirror/CodeMirror/issues",
     "keywords": ["JavaScript", "CodeMirror", "Editor"],
