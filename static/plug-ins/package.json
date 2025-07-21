@@ -27,7 +27,7 @@
   "homepage": "https://github.com/pandao/editor.md",
   "devDependencies": {
     "dateformatter": "0.1.0",
-    "gulp": "4.0.2",
+    "gulp": "5.0.1",
     "gulp-concat": "2.6.1",
     "gulp-header": "2.0.9",
     "gulp-jshint": "2.1.0",
